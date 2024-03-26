@@ -36,12 +36,20 @@ func TestCheckoutItem_GetPrice(t *testing.T) {
 			expected:      25,
 		},
 		{
-			name:          "With offer, quantity greater than offer quantity",
+			name:          "With offer, quantity greater than offer quantity, remainder < 0.5 * offer quantity",
 			unitPrice:     15,
 			offerQuantity: 6,
 			offerPrice:    25,
 			quantity:      7,
 			expected:      40,
+		},
+		{
+			name:          "With offer, quantity greater than offer quantity, remainder > 0.5 * offer quantity",
+			unitPrice:     8,
+			offerQuantity: 6,
+			offerPrice:    25,
+			quantity:      10,
+			expected:      57,
 		},
 	}
 
