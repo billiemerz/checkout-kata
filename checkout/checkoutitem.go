@@ -1,10 +1,24 @@
 package checkout
 
+/*
+checkoutItem stores data about an item with a given SKU in the basket.
+This includes the pricing information and the quantity of the item.
+*/
 type checkoutItem struct {
 	itemPricing
 	quantity int
 }
 
+/*
+getPrice returns the total price of the item based on the quantity and pricing information.
+
+If the item has an offer, the price is calculated as follows:
+- Add items at offer price (quotient of (quantity/ offer quantity) * offer price)
+- Add remaining items at unit price (remainder of (quantity/ offer quantity) * unit price)
+
+If the item has no offer, the price is calculated as:
+- Add items at unit price
+*/
 func (c checkoutItem) getPrice() int {
 
 	total := 0
