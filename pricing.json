@@ -1,0 +1,22 @@
+{
+    "A": {
+        "unitPrice": 50,
+        "offerQuantity": 3,
+        "offerPrice": 130
+    }, 
+    "B": {
+        "unitPrice": 30,
+        "offerQuantity": 2,
+        "offerPrice": 45
+    },
+    "C": {
+        "unitPrice": 20,
+        "offerQuantity": 0,
+        "offerPrice": 0
+    },
+    "D": {
+        "unitPrice": 15,
+        "offerQuantity": 0,
+        "offerPrice": 0
+    }
+}
