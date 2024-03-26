@@ -1,0 +1,10 @@
+{
+    "A": {
+        "unitPrice": 50,
+        "offerQuantity": 3,
+        "offerPrice": 130
+    }, 
+    "B": {
+        "unitPrice": 30
+    }
+}

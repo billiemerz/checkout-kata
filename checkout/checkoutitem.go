@@ -17,7 +17,7 @@ If the item has an offer, the price is calculated as follows:
 - Add remaining items at unit price (remainder of (quantity/ offer quantity) * unit price)
 
 If the item has no offer, the price is calculated as:
-- Add items at unit price
+- Add all items at unit price
 */
 func (c checkoutItem) getPrice() int {
 
