@@ -1,5 +1,7 @@
 package checkout
 
+import "fmt"
+
 type ICheckout interface {
 	Scan(string) error
 	GetTotalPrice() int
@@ -36,10 +38,15 @@ func (c Checkout) Scan(sku string) error {
 	if found {
 		item.quantity++
 	} else {
-		// need to get the pricing information from the pricing schema
+		itemPricing, err := getItemPricing(sku)
+
+		if err != nil {
+			return fmt.Errorf("error getting item pricing: %w", err)
+		}
 
 		c.basket[sku] = &checkoutItem{
-			quantity: 1,
+			quantity:    1,
+			itemPricing: itemPricing,
 		}
 	}
 
