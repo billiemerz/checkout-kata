@@ -6,5 +6,10 @@
     }, 
     "B": {
         "unitPrice": 30
+    },
+    "C": {
+        "unitPrice": 20,
+        "offerQuantity": 2,
+        "offerPrice": 35
     }
 }

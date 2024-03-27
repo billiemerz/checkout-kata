@@ -22,8 +22,28 @@ type itemPricing struct {
 	OfferPrice    int `json:"offerPrice"`
 }
 
+/*
+getItemPricing returns the pricing information for an item based on its SKU,
+this will be called if the item does not already exist in the basket.
+
+If the item is not found in the pricing schema, an error is returned.
+
+This function could be replaced with a cache lookup/ db query/ call to a
+separate service in the real world.
+*/
 func getItemPricing(sku string) (itemPricing, error) {
-	return itemPricing{}, nil
+	pricingSchema, err := loadPricingSchema()
+
+	if err != nil {
+		return itemPricing{}, fmt.Errorf("error loading pricing schema: %w", err)
+	}
+
+	itemPricing, found := pricingSchema[sku]
+	if !found {
+		return itemPricing, fmt.Errorf("item not found in pricing schema")
+	}
+
+	return itemPricing, nil
 }
 
 /*

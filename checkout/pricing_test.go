@@ -21,7 +21,7 @@ func TestGetItemPricing(t *testing.T) {
 		},
 		{
 			name:        "invalid item",
-			sku:         "C",
+			sku:         "D",
 			expected:    itemPricing{},
 			expectedErr: errors.New("item not found in pricing schema"),
 		},
@@ -64,6 +64,11 @@ func TestLoadPricingSchema(t *testing.T) {
 				},
 				"B": itemPricing{
 					UnitPrice: 30,
+				},
+				"C": itemPricing{
+					UnitPrice:     20,
+					OfferQuantity: 2,
+					OfferPrice:    35,
 				},
 			},
 			expectedErr: nil,
