@@ -65,6 +65,13 @@ It is parsed from the pricingSchemaFile.
 */
 type pricingSchema map[string]itemPricing
 
+/*
+loadPricingSchema loads the pricing schema from the pricingSchemaFile,
+by default this is pricing.json in the root directory.
+
+If the file cannot be opened or decoded from JSON, an error is returned, otherwise we
+return a pricingSchema type.
+*/
 func loadPricingSchema() (pricingSchema, error) {
 	file, err := os.Open(pricingSchemaFile)
 	if err != nil {
