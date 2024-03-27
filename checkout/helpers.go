@@ -20,6 +20,11 @@ func ErrorContains(out error, want error) bool {
 	return strings.Contains(out.Error(), want.Error())
 }
 
+/*
+rootDir returns the root directory of the project. This will
+remain the same regardless of where the code is called from -
+i.e. tests/ a main package etc.
+*/
 func rootDir() string {
 	_, b, _, _ := runtime.Caller(0)
 	d := path.Join(path.Dir(b))

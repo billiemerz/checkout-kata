@@ -21,6 +21,10 @@ func init() {
 	setDefaultPricingSchemaFile()
 }
 
+/*
+setDefaultPricingSchemaFile sets the pricingSchemaFile to the default path,
+this is pricing.json in the root directory of the project.
+*/
 func setDefaultPricingSchemaFile() {
 	pricingSchemaFile = path.Join(rootDir(), "pricing.json")
 }
