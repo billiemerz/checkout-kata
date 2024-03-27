@@ -4,8 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"path/filepath"
-	"runtime"
+	"path"
 )
 
 /*
@@ -19,12 +18,7 @@ var pricingSchemaFile string
 init sets the pricingSchemaFile to the correct path.
 */
 func init() {
-	_, b, _, _ := runtime.Caller(0)
-
-	// Root folder of this project
-	root := filepath.Join(filepath.Dir(b), "..")
-
-	pricingSchemaFile = filepath.Join(root, "pricing.json")
+	pricingSchemaFile = path.Join(rootDir(), "pricing.json")
 }
 
 /*

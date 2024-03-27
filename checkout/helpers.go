@@ -1,6 +1,11 @@
 package checkout
 
-import "strings"
+import (
+	"path"
+	"path/filepath"
+	"runtime"
+	"strings"
+)
 
 /*
 ErrorContains is a helper function to check errors in tests
@@ -13,4 +18,10 @@ func ErrorContains(out error, want error) bool {
 		return false
 	}
 	return strings.Contains(out.Error(), want.Error())
+}
+
+func rootDir() string {
+	_, b, _, _ := runtime.Caller(0)
+	d := path.Join(path.Dir(b))
+	return filepath.Dir(d)
 }
