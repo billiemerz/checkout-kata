@@ -22,3 +22,29 @@ interface ICheckout
     int GetTotalPrice();
 }
 ```
+
+## Run tests
+`go test ./...` from root of directory 
+Also run on push to main branch in Github action
+
+## Build/ run
+`go build .` from root of directory
+`./checkout-kata` / `./checkout-kata.exe` depending on OS
+
+OR 
+
+`go run main.go`
+
+This will activate a small interactive version that interacts with the interface,
+items can be added to the basket by entering their SKU, or a total can be calculated
+by entering `TOTAL`, entering `EXIT`/ a SIGTERM (ctrl+c/ cmd+c) will exit
+
+## Notes
+
+As mentioned inside `checkout/pricing.go` (`getItemPricing(sku string)`),
+service could use caching/ db calls/ call an external service for pricing
+
+Considerations for different pricing models - we could define checkoutItem as an 
+interface implementing `getPrice()` to give different items different pricing models
+
+Differed slightly from suggested interface, adding an `error` return value to `Scan()`

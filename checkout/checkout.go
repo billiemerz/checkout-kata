@@ -31,6 +31,11 @@ func (c Checkout) GetTotalPrice() int {
 	return total
 }
 
+/*
+Scan takes the SKU of an item, and looks it up within the existing basket
+If the item is found, the quantity is incremented
+If the item is not found, the item is added to the basket with a quantity of 1
+*/
 func (c Checkout) Scan(sku string) error {
 
 	item, found := c.basket[sku]
