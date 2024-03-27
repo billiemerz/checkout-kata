@@ -29,6 +29,19 @@ func (c Checkout) GetTotalPrice() int {
 	return total
 }
 
-func (c Checkout) Scan(item string) error {
+func (c Checkout) Scan(sku string) error {
+
+	item, found := c.basket[sku]
+
+	if found {
+		item.quantity++
+	} else {
+		// need to get the pricing information from the pricing schema
+
+		c.basket[sku] = &checkoutItem{
+			quantity: 1,
+		}
+	}
+
 	return nil
 }

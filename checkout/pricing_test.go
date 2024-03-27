@@ -6,6 +6,46 @@ import (
 	"testing"
 )
 
+func TestGetItemPricing(t *testing.T) {
+	tTable := []struct {
+		name        string
+		sku         string
+		expected    itemPricing
+		expectedErr error
+	}{
+		{
+			name:        "valid item",
+			sku:         "A",
+			expected:    itemPricing{50, 3, 130},
+			expectedErr: nil,
+		},
+		{
+			name:        "invalid item",
+			sku:         "C",
+			expected:    itemPricing{},
+			expectedErr: errors.New("item not found in pricing schema"),
+		},
+	}
+
+	pricingSchemaFile = "testdata/valid_pricing.json"
+
+	for _, tt := range tTable {
+		t.Run(tt.name, func(t *testing.T) {
+			pricingSchemaFile = "testdata/valid_pricing.json"
+			ip, err := getItemPricing(tt.sku)
+
+			if !reflect.DeepEqual(ip, tt.expected) {
+				t.Errorf("Expected item pricing: %v, got: %v", tt.expected, ip)
+			}
+
+			if !ErrorContains(err, tt.expectedErr) {
+				t.Errorf("expected %v, got %v", tt.expectedErr, err)
+			}
+		})
+	}
+
+}
+
 func TestLoadPricingSchema(t *testing.T) {
 	tTable := []struct {
 		name            string

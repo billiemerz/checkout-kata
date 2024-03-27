@@ -22,6 +22,10 @@ type itemPricing struct {
 	OfferPrice    int `json:"offerPrice"`
 }
 
+func getItemPricing(sku string) (itemPricing, error) {
+	return itemPricing{}, nil
+}
+
 /*
 pricingSchema is a map of SKU to itemPricing.
 
