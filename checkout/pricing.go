@@ -18,6 +18,10 @@ var pricingSchemaFile string
 init sets the pricingSchemaFile to the correct path.
 */
 func init() {
+	setDefaultPricingSchemaFile()
+}
+
+func setDefaultPricingSchemaFile() {
 	pricingSchemaFile = path.Join(rootDir(), "pricing.json")
 }
 

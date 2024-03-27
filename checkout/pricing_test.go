@@ -28,10 +28,10 @@ func TestGetItemPricing(t *testing.T) {
 	}
 
 	pricingSchemaFile = "testdata/valid_pricing.json"
+	defer setDefaultPricingSchemaFile()
 
 	for _, tt := range tTable {
 		t.Run(tt.name, func(t *testing.T) {
-			pricingSchemaFile = "testdata/valid_pricing.json"
 			ip, err := getItemPricing(tt.sku)
 
 			if !reflect.DeepEqual(ip, tt.expected) {
@@ -86,6 +86,8 @@ func TestLoadPricingSchema(t *testing.T) {
 			expectedErr:     errors.New("error opening pricing file"),
 		},
 	}
+
+	defer setDefaultPricingSchemaFile()
 
 	for _, tt := range tTable {
 		t.Run(tt.name, func(t *testing.T) {
