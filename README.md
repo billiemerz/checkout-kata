@@ -24,8 +24,7 @@ interface ICheckout
 ```
 
 ## Run tests
-`go test ./...` from root of directory 
-Also run on push to main branch in Github action
+`go test ./...` from root of directory - also runs on push to main branch in Github action
 
 ## Build/ run
 `go build .` from root of directory
@@ -42,7 +41,7 @@ by entering `TOTAL`, entering `EXIT`/ a SIGTERM (ctrl+c/ cmd+c) will exit
 ## Notes
 
 As mentioned inside `checkout/pricing.go` (`getItemPricing(sku string)`),
-service could use caching/ db calls/ call an external service for pricing
+we could use caching/ db calls/ call an external service for pricing
 
 Considerations for different pricing models - we could define checkoutItem as an 
 interface implementing `getPrice()` to give different items different pricing models
