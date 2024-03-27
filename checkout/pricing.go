@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path/filepath"
+	"runtime"
 )
 
 /*
@@ -11,7 +13,19 @@ PricingSchemaFile is the name of the file that contains the pricing information 
 
 package level variable for testing purposes.
 */
-var pricingSchemaFile = "pricing.json"
+var pricingSchemaFile string
+
+/*
+init sets the pricingSchemaFile to the correct path.
+*/
+func init() {
+	_, b, _, _ := runtime.Caller(0)
+
+	// Root folder of this project
+	root := filepath.Join(filepath.Dir(b), "..")
+
+	pricingSchemaFile = filepath.Join(root, "pricing.json")
+}
 
 /*
 itemPricing struct is used to store the pricing information of an item.
